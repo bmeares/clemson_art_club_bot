@@ -12,9 +12,15 @@ from typing import Optional, Dict, Any
 from .config import get_club_config
 from .pipes import artwork_pipe, leaderboard_pipe
 
-async def _help(message):
+async def _unknown(message):
+    header = f"Sorry, I don't know what '{message.content}' means. Here are some commands I know:"
+    await _help(message, header)
+
+async def _help(message, header : Optional[str] = None):
+    if header is None:
+        header = "Here's how you can interact with me!"
     help_msg = (
-        "Here's how you can interact with me!\n\n" +
+        header + "\n\n" +
         "**Commands:**\n"
     )
     for t, v in get_club_config('triggers').items():

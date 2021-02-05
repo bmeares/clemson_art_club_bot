@@ -26,6 +26,9 @@ class ClubClient(discord.Client):
         if trigger in trigger_functions:
             await trigger_functions[trigger](message)
 
+        if trigger is None and message.content is not None and message.content.startswith(get_club_config('triggers', 'leader')):
+            await trigger_functions['unknown'](message)
+
         if message.attachments and message.channel.name == get_club_config('upload_channel'):
             from meerschaum.utils.formatting import print_tuple
             from .bot import register_artwork, get_monthly_submissions, get_monthly_days
