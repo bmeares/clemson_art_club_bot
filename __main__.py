@@ -7,8 +7,10 @@ Launch the Clemson Art Club bot.
 """
 
 def main(**kw):
-    from clemson_art_club_bot.bot import client, TOKEN
-    client.run(TOKEN)
+    from .bot import start
+    from meerschaum.utils.warnings import info
+    info(f"Starting Discord bot...")
+    return start()
 
 if __name__ == "__main__":
     main()
