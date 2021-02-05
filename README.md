@@ -1,1 +1,0 @@
-# clemson-art-club-bot

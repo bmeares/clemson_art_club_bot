@@ -6,6 +6,7 @@ import os
 
 import discord
 from dotenv import load_dotenv
+import meerschaum as mrsm
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
