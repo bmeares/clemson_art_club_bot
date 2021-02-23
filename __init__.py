@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*-
 # vim:fenc=utf-8
 
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 
 required = [
     'discord.py',
     'pandas',
+    'pytz',
 ]
 
 from meerschaum.actions import make_action
