@@ -9,10 +9,11 @@ Custom Discord client
 from .config import get_club_config
 from .trigger_actions import trigger_functions
 
-import discord
+import discord, random
 import datetime, pytz
 from dateutil import relativedelta
 eastern = pytz.timezone('US/Eastern')
+ordinal = lambda n: "%d%s" % (n,"tsnrhtdd"[(n//10%10!=1)*(n%10<4)*n%10::4])
 
 class ClubClient(discord.Client):
     async def on_ready(self):
@@ -47,7 +48,7 @@ class ClubClient(discord.Client):
             monthly_submissions = get_unique_submissions(message.author, now=now)
             days_remaining = (next_month_begin - now.replace(tzinfo=None)).days
 
-            upload_message = get_club_config('upload_message')
+            upload_message = random.choice(get_club_config('upload_messages'))
             msg = eval(f'f"""{upload_message}"""')
             await message.channel.send(msg)
 
